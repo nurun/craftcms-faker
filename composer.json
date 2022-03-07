@@ -1,0 +1,28 @@
+{
+    "name": "jordanbeattie/craftcms-faker",
+    "description": "Fake entry fields for CraftCMS",
+    "type": "craft-plugin",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin"
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Jordanbeattie\\CraftcmsFaker\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jordan Beattie",
+            "email": "jordan@jordanbeattie.com"
+        }
+    ],
+    "extra": {
+        "name": "Faker",
+        "handle": "faker",
+        "class": "Jordanbeattie\\CraftcmsFaker\\Faker"
+    }
+}
