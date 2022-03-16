@@ -6,11 +6,11 @@ use Jordanbeattie\CraftcmsFaker\models\Collection;
 class SuperTable extends Collection
 {
 
-    public $fields;
+    public $items;
 
-    public function __construct( $fields = null )
+    public function __construct( $items = null )
     {
-        $this->fields = $fields;
+        $this->items = $items;
     }
 
 }

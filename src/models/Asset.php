@@ -3,17 +3,18 @@
 namespace Jordanbeattie\CraftcmsFaker\models;
 use Jordanbeattie\CraftcmsFaker\models\Collection;
 
-class AssetField extends Collection
+class Asset extends Collection
 {
 
-    public $url, $title, $alt, $extension;
+    public $url, $title, $alt, $extension, $kind;
 
-    public function __construct( $url = null, $title = null, $alt = null )
+    public function __construct( $url = null, $title = null, $alt = null, $kind = null )
     {
         $this->url = $url ?? null;
         $this->title = $title ?? null;
         $this->alt = $alt ?? ($this->title ?? null);
         $this->extension = "png";
+        $this->kind = $kind ?? "image";
     }
 
     public function url()
@@ -24,6 +25,11 @@ class AssetField extends Collection
     public function getUrl($attributes=null)
     {
         return $this->url;
+    }
+
+    public function setTransform($attributes=null)
+    {
+        return $this;
     }
 
 }
