@@ -41,18 +41,14 @@ Class FakerVariable
 
     public function entry( $attributes = null )
     {
-        $title = $attributes['title'] ?? null;
-        $slug = $attributes['slug'] ?? null;
-        return new Entry( $title, $slug, $attributes );
+        return new Entry( $attributes );
     }
 
     public function donkeyTail( $attributes = null )
     {
         $url = $attributes['url'] ?? 'https://picsum.photos/200';
-        $title = $attributes['title'] ?? 'Default image title';
-        $alt = $attributes['alt'] ?? $title;
-        $kind = $attributes['kind'] ?? null;
-        return new DonkeyTail($url, $title, $alt, $kind);
+        $pins = $arrtibutes['pins'] ?? [];
+        return new DonkeyTail($url, $pins);
     }
     
 }

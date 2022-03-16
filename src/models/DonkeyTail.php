@@ -7,17 +7,13 @@ use Jordanbeattie\CraftcmsFaker\models\Collection;
 class DonkeyTail extends Asset
 {
 
-    public $url, $title, $alt, $extension, $kind, $canvas, $pins;
+    public $url, $canvas, $pins;
 
-    public function __construct( $url = null, $title = null, $alt = null, $kind = null )
+    public function __construct( $url = null, $pins = null )
     {
         $this->url = $url ?? null;
-        $this->title = $title ?? null;
-        $this->alt = $alt ?? ($this->title ?? null);
-        $this->extension = "png";
-        $this->kind = $kind ?? "image";
         $this->canvas = $this;
-        $this->pins = [];
+        $this->pins = $pins;
     }
 
     public function url()

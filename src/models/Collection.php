@@ -44,4 +44,9 @@ class Collection extends Model implements Countable
         return count($this->all());
     }
 
+    public function first()
+    {
+        return $this->all()[0];
+    }
+
 }
