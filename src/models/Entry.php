@@ -1,6 +1,7 @@
 <?php
 
 namespace Jordanbeattie\CraftcmsFaker\models;
+use DateTime;
 use Jordanbeattie\CraftcmsFaker\models\Asset;
 use Jordanbeattie\CraftcmsFaker\models\Collection;
 
@@ -26,7 +27,28 @@ class Entry extends Collection
         {
             $class->$key = $value;
         }
+        $this->addStandardProperties($class);
         return $class;
+    }
+
+    private function addStandardProperties($class)
+    {
+
+        $defaults = [
+            'title' => 'Fake entry', 
+            'postDate' => date('now'), 
+            'slug' => 'fake-entry', 
+            'url' => '#'
+        ];
+
+        foreach ($defaults as $property => $value) {
+            if(!property_exists($class, $property))
+            {
+                $class->$property = $value;
+            }
+        }
+
+
     }
 
 }
