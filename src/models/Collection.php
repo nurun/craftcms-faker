@@ -49,4 +49,10 @@ class Collection extends Model implements Countable
         return $this->all()[0];
     }
 
+    public function nth($n)
+    {
+        $all = $this->all();
+        return array_key_exists($n, $all) ? $all[$n] : $this->first();
+    }
+
 }
