@@ -50,10 +50,10 @@ Class FakerVariable
         return new Entry( $attributes );
     }
 
-    public function donkeyTail( $attributes = null )
+    public function donkeytail( $attributes = null )
     {
         $url = $attributes['url'] ?? 'https://picsum.photos/200';
-        $pins = $arrtibutes['pins'] ?? [];
+        $pins = $attributes['pins'] ?? [];
         return new DonkeyTail($url, $pins);
     }
     
