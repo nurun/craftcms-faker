@@ -32,7 +32,7 @@ Class FakerVariable
         return new Collection( $items ); 
     }
 
-    public function superTable( $items = null )
+    public function supertable( $items = null )
     {
         return new SuperTable( $items );
     }
