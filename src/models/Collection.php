@@ -55,4 +55,11 @@ class Collection extends Model implements Countable
         return array_key_exists($n, $all) ? $all[$n] : $this->first();
     }
 
+    public function offset($offset)
+    {
+        $all_items = $this->all();
+        $limited_items = array_splice($all_items, $offset, count($all_items));
+        return new Collection($limited_items);
+    }
+
 }
