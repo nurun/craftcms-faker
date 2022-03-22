@@ -60,11 +60,11 @@ Class FakerVariable
     public function navigation( $totalItems )
     {
         $items = [];
-        for ($i=0; $i < $totalItems; $i++) { 
+        for ($i=1; $i < $totalItems+1; $i++) { 
             array_push($items, [
                 'url' => '#page-' . $i,
                 'title' => 'Page ' . $i,
-                'active' => $i == 0,
+                'active' => $i == 1,
                 'newWindow' => false, 
                 'customAttributes' => []
             ]);
