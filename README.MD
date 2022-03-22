@@ -137,6 +137,19 @@ craft.faker.donkeytail({
 
 If not provided in the attributes, the model will automatically assign a title, URL, slug and postDate.
 
+
+### Navigation
+Designed to mimic [Verbb's navigation plugin](https://verbb.io/craft-plugins/navigation/features), the navigation function will accept an integer for the total amount of items to return and will provide a Collection of items, each with: 
+- url
+- title
+- active
+- newWindow
+- customAttributes
+
+```
+craft.faker.navigation(4)
+```
+
 ## Contact 
 Jordan Beattie <br>
 jordan@mission10.co.uk <br>
