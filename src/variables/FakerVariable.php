@@ -56,5 +56,20 @@ Class FakerVariable
         $pins = $attributes['pins'] ?? [];
         return new DonkeyTail($url, $pins);
     }
+
+    public function navigation( $totalItems )
+    {
+        $items = [];
+        for ($i=0; $i < $totalItems; $i++) { 
+            array_push($items, [
+                'url' => '#page-' . $i,
+                'title' => 'Page ' . $i,
+                'active' => $i == 0,
+                'newWindow' => false, 
+                'customAttributes' => []
+            ]);
+        }
+        return new Collection($items);
+    }
     
 }
