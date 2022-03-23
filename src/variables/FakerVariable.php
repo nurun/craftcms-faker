@@ -6,6 +6,7 @@ use Jordanbeattie\CraftcmsFaker\models\Asset;
 use Jordanbeattie\CraftcmsFaker\models\Collection;
 use Jordanbeattie\CraftcmsFaker\models\DonkeyTail;
 use Jordanbeattie\CraftcmsFaker\models\Entry;
+use Jordanbeattie\CraftcmsFaker\models\Icon;
 use Jordanbeattie\CraftcmsFaker\models\Link;
 use Jordanbeattie\CraftcmsFaker\models\SuperTable;
 
@@ -70,6 +71,11 @@ Class FakerVariable
             ]);
         }
         return new Collection($items);
+    }
+
+    public function icon($icon = null, $sprite = null, $glyphId = null, $glyphName = null, $iconSet = null, $type = null, $css = null, $width = null, $height = null)
+    {
+        return new Icon($icon, $sprite, $glyphId, $glyphName, $iconSet, $type, $css, $width, $height);
     }
     
 }
