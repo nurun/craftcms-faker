@@ -45,4 +45,9 @@ class Link extends Collection
         return $this->target();
     }
 
+    public function isEmpty()
+    {
+        return false;
+    }
+
 }
