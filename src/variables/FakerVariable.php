@@ -58,17 +58,33 @@ Class FakerVariable
         return new DonkeyTail($url, $pins);
     }
 
-    public function navigation( $totalItems )
+    public function navigation( $totalItems, $children = false )
     {
         $items = [];
         for ($i=1; $i < $totalItems+1; $i++) { 
-            array_push($items, [
+            $item = [
                 'url' => '#page-' . $i,
                 'title' => 'Page ' . $i,
                 'active' => $i == 1,
                 'newWindow' => false, 
                 'customAttributes' => []
-            ]);
+            ];
+            if( $children )
+            {
+                $item['hasDescendants'] = true;
+                $children = [];
+                for ($j=1; $j < random_int(2, 5); $j++) { 
+                    array_push($children, [
+                        'url' => '#child-' . $j,
+                        'title' => 'Child ' . $j,
+                        'active' => ($i == 1 && $j == 1),
+                        'newWindow' => false, 
+                        'customAttributes' => []
+                    ]);
+                }
+                $item['children'] = $children;
+            }
+            array_push($items, $item);
         }
         return new Collection($items);
     }
