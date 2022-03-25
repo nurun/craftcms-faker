@@ -62,4 +62,25 @@ class Collection extends Model implements Countable
         return new Collection($limited_items);
     }
 
+    public function level($level)
+    {
+        $items = $this->all();
+        $newItems = [];
+        foreach( $items as $item )
+        {
+            if( $level == 2 )
+            {
+                if( $item['hasDescendants'] )
+                {
+                    array_push($newItems, $item['children']);
+                }
+            }
+            else
+            {
+                $newItems = $items;
+            }
+        }
+        return new Collection($newItems);
+    }
+
 }
