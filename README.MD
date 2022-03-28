@@ -44,9 +44,17 @@ Designed to mimic an asset from Craft's asset volumes, this can be used in many 
 - Title
 - Alt
 - Kind
+- Source
+- Width 
+- Height
+
+#### Sources
+You can select a source to be used when generating default images. You can choose [Lorem Picsum](https://picsum.photos) or [Placeholder](https://placeholder.com). This can either be selected in the CMS Settings and can be set to a ENV variable. 
+By default, images will be provided by Lorem Picsum. 
+You can also overwrite this setting per image by passing the `source` attribute with either `picsum` or `placeholder` as the value. This will default to `picsum`.
 
 #### Default URL
-If no URl is passed to the function, a URL will be created for you using [Lorem Picsum](https://picsum.photos). 
+If no URl is passed to the function, a URL will be created for you using your selected source (see above). 
 If you want an image generated automatically, simply do not include the URL attribute, instead you can optionally pass a height and width. 
 
 ```
@@ -58,6 +66,7 @@ craft.faker.asset({
 })
 
 craft.faker.asset({
+    source: "placeholder"
     width: 1080, 
     height: 720
 })
