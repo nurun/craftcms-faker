@@ -2,6 +2,7 @@
 
 namespace Jordanbeattie\CraftcmsFaker\variables;
 use Craft;
+use Jordanbeattie\CraftcmsFaker\Faker;
 use Jordanbeattie\CraftcmsFaker\models\Asset;
 use Jordanbeattie\CraftcmsFaker\models\Collection;
 use Jordanbeattie\CraftcmsFaker\models\DonkeyTail;
@@ -15,11 +16,14 @@ Class FakerVariable
     
     public function asset( $attributes = null )
     {
-        $fakeUrl = 'https://picsum.photos/200/200';
-        if( !is_null($attributes) && array_key_exists('width', $attributes) && array_key_exists('height', $attributes) )
-        {
-            $fakeUrl = "https://picsum.photos/" . $attributes['width'] . "/" . $attributes['height'];
-        }
+        $fakeUrl = Faker::getInstance()
+            ->getSettings()
+            ->getFakeImageUrl( 
+                $attributes['source'] ?? Faker::getInstance()
+                ->getSettings()->getSource(),
+                $attributes['width'] ?? "200", 
+                $attributes['height'] ?? "200" 
+        );
         $url = $attributes['url'] ?? $fakeUrl;
         $title = $attributes['title'] ?? 'Default image title';
         $alt = $attributes['alt'] ?? $title;

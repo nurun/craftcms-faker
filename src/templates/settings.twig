@@ -1,0 +1,13 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.selectizeField({
+    label: "Image Source",
+    id: 'source',
+    name: 'source',
+    options: [
+        { value: 'picsum', label: "Picsum"|t('app') },
+        { value: 'placeholder', label: "Placeholder"|t('app') },
+    ],
+    includeEnvVars: true,
+    value: settings.source,
+}) }}
