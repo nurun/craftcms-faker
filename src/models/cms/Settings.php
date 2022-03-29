@@ -14,10 +14,13 @@ class Settings extends Model
         return App::parseEnv($this->source);
     }
 
-    public function getFakeImageUrl( $source, $width, $height )
+    public function getFakeImageUrl( $source = null, $width = null, $height = null )
     {
+        $width = $width ?? "200";
+        $height = $height ?? "200";
         $source = ($source ?? $this->getSource());
         $source = (in_array($source, ['picsum', 'placeholder']) ? $source : "picsum");
+
         $url = $source == "picsum"
                    ? "https://picsum.photos/"
                    : "https://via.placeholder.com/";
@@ -26,4 +29,12 @@ class Settings extends Model
         $url .= "&color=#808080";
         return $url;
     }
+
+    public function getFakeVideoUrl()
+    {
+        $baseUrl = "https://raw.githubusercontent.com/jordannbeattie/craftcms-faker/master/src/assets/video/";
+        $videos = ['light.mp4', 'dark.mp4'];
+        return $baseUrl  . $videos[array_rand($videos)];
+    }
+
 }

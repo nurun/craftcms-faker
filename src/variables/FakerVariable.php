@@ -16,18 +16,17 @@ Class FakerVariable
     
     public function asset( $attributes = null )
     {
-        $fakeUrl = Faker::getInstance()
-            ->getSettings()
-            ->getFakeImageUrl( 
-                $attributes['source'] ?? Faker::getInstance()
-                ->getSettings()->getSource(),
-                $attributes['width'] ?? "200", 
-                $attributes['height'] ?? "200" 
+        $settings = Faker::getInstance()->getSettings();
+        $fakeImageUrl = $settings->getFakeImageUrl( 
+            $attributes['source'] ?? null,
+            $attributes['width'] ?? null, 
+            $attributes['height'] ?? null
         );
-        $url = $attributes['url'] ?? $fakeUrl;
-        $title = $attributes['title'] ?? 'Default image title';
+        $fakeVideoUrl = $settings->getFakeVideoUrl();
+        $kind = $attributes['kind'] ?? "image";
+        $url = $attributes['url'] ?? ( $kind == "image" ? $fakeImageUrl : $fakeVideoUrl );
+        $title = $attributes['title'] ?? 'Default asset title';
         $alt = $attributes['alt'] ?? $title;
-        $kind = $attributes['kind'] ?? null;
 
         return new Asset($url, $title, $alt, $kind);
     }
