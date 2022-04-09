@@ -83,4 +83,12 @@ class Collection extends Model implements Countable
         return new Collection($newItems);
     }
 
+    public function add( $item )
+    {
+        $items = $this->items ?? [];
+        $item = is_array($item) ? $item : [$item];
+        $this->items = array_merge($items, $item);
+        return $this;
+    }
+
 }
