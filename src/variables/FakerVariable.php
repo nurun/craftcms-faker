@@ -20,7 +20,10 @@ Class FakerVariable
         $fakeImageUrl = $settings->getFakeImageUrl( 
             $attributes['source'] ?? null,
             $attributes['width'] ?? null, 
-            $attributes['height'] ?? null
+            $attributes['height'] ?? null,
+            $attributes['id'] ?? null,
+            $attributes['text'] ?? null,
+            $attributes['query'] ?? null,
         );
         $fakeVideoUrl = $settings->getFakeVideoUrl();
         $kind = $attributes['kind'] ?? "image";

@@ -14,20 +14,38 @@ class Settings extends Model
         return App::parseEnv($this->source);
     }
 
-    public function getFakeImageUrl( $source = null, $width = null, $height = null )
+    public function getFakeImageUrl( $source = null, $width = null, $height = null, $id = null, $text = null, $query = null )
     {
+        
         $width = $width ?? "200";
         $height = $height ?? "200";
         $source = ($source ?? $this->getSource());
-        $source = (in_array($source, ['picsum', 'placeholder']) ? $source : "picsum");
+        $source = (in_array($source, ['picsum', 'placeholder', 'unsplash']) ? $source : "picsum");
 
-        $url = $source == "picsum"
-                   ? "https://picsum.photos/"
-                   : "https://via.placeholder.com/";
-        $url .= $width . ( $source == "picsum" ? "/" : "x") . $height;
-        $url .= "?text=" . $width . "x" . $height;
-        $url .= "&color=#808080";
+        if( $source == "unsplash" )
+        {
+            $url = "https://source.unsplash.com/";
+            $url .= $id ?? "random";
+            $url .= "/" . $width . "x" . $height . "/";
+            if( !is_null($query) ){ 
+                $url .= "?" . $query; 
+            }
+        }
+        elseif( $source == "placeholder" )
+        {
+            $url = "https://via.placeholder.com/";
+            $url .= $width . "x" . $height;
+            $url .= "?text=" . $text ?? $width . " x " . $height;
+            $url .= "&color=#808080";
+        }
+        else
+        {
+            $url = "https://picsum.photos/";
+            $url .= $width . "/" . $height;
+        }
+        
         return $url;
+
     }
 
     public function getFakeVideoUrl()

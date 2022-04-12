@@ -40,22 +40,38 @@ craft.faker.collection([
 Designed to mimic an asset from Craft's asset volumes, this can be used in many different ways. 
 
 #### Available attributes
-- URL
-- Title
-- Alt
-- Kind
-- Source
-- Width 
-- Height
+- url
+- title
+- alt
+- kind
+- source
+- width 
+- height
+- text
+- id
+- query
 
 #### Sources
-You can select a source to be used when generating default images. You can choose [Lorem Picsum](https://picsum.photos) or [Placeholder](https://placeholder.com). This can either be selected in the CMS Settings and can be set to a ENV variable. 
-By default, images will be provided by Lorem Picsum. 
-You can also overwrite this setting per image by passing the `source` attribute with either `picsum` or `placeholder` as the value. This will default to `picsum`.
+You can select a source to be used when generating default images. You can choose [Lorem Picsum](https://picsum.photos) _(default)_, [Placeholder](https://placeholder.com) or [Unsplash](https_://unsplash.com/). 
+
+This can either be selected in the CMS Settings and can be set to a ENV variable. 
+
+You can also overwrite this setting per image by passing the `source` attribute with either `picsum`, `placeholder` or `unsplash` as the value. 
 
 #### Default URL
 If no URl is passed to the function, a URL will be created for you using your selected source (see above). 
 If you want an image generated automatically, simply do not include the URL attribute, instead you can optionally pass a height and width. 
+
+#### Sizing
+You can pass `width` and `height` if you require. This is useful for passing images that are later transformed. Both will default to 200. 
+
+#### ID
+When using `unsplash`, you can pass an id to select a specific image.
+
+#### Query
+When using `unsplash`, you can pass a query string to retrieve images related to the query.
+
+#### Example
 
 ```
 craft.faker.asset({
@@ -154,9 +170,14 @@ Designed to mimic [Verbb's navigation plugin](https://verbb.io/craft-plugins/nav
 - active
 - newWindow
 - customAttributes
+- hasDescendants
+- children
+
+If you would like to return multi-level navigation, you can add a `true` second parameter. This currently only supports two levels.
 
 ```
 craft.faker.navigation(4)
+craft.faker.navigation(4, true)
 ```
 
 ## Contact 
