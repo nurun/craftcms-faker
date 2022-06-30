@@ -2,6 +2,7 @@
 
 namespace Jordanbeattie\CraftcmsFaker;
 use \craft\web\twig\variables\CraftVariable;
+use craft\base\Model;
 use Jordanbeattie\CraftcmsFaker\models\cms\Settings;
 use Jordanbeattie\CraftcmsFaker\variables\FakerVariable;
 use yii\base\Event;
@@ -9,7 +10,7 @@ use yii\base\Event;
 class Faker extends \craft\base\Plugin
 {
 
-    public $hasCpSettings = true;
+    public bool $hasCpSettings = true;
 
     public function init()
     {
@@ -27,12 +28,12 @@ class Faker extends \craft\base\Plugin
 
     }
 
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }
 
-    protected function settingsHtml()
+    protected function settingsHtml(): ?string
     {
         return \Craft::$app->getView()->renderTemplate(
             'faker/settings',

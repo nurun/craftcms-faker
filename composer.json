@@ -8,7 +8,10 @@
         "craftcms",
         "craft-plugin"
     ],
-    "require": {},
+    "require": {
+        "craftcms/cms": "^3|^4",
+        "php": "^7.2.5|^8.0"
+    },
     "autoload": {
         "psr-4": {
             "Jordanbeattie\\CraftcmsFaker\\": "src/"
@@ -24,5 +27,16 @@
         "name": "Faker",
         "handle": "faker",
         "class": "Jordanbeattie\\CraftcmsFaker\\Faker"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "craftcms/rector": "dev-main"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
     }
 }
