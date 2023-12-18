@@ -30,8 +30,9 @@ Class FakerVariable
         $url = $attributes['url'] ?? ( $kind == "image" ? $fakeImageUrl : $fakeVideoUrl );
         $title = $attributes['title'] ?? 'Default asset title';
         $alt = $attributes['alt'] ?? $title;
+        $customFields = $attributes['customFields'] ?? [];
 
-        return new Asset($url, $title, $alt, $kind);
+        return new Asset($url, $title, $alt, $kind, $customFields);
     }
 
     public function collection( $items = null )
