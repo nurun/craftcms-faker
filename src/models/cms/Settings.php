@@ -20,7 +20,7 @@ class Settings extends Model
         $width = $width ?? "200";
         $height = $height ?? "200";
         $source = ($source ?? $this->getSource());
-        $source = (in_array($source, ['picsum', 'placeholder', 'unsplash']) ? $source : "picsum");
+        $source = (in_array($source, ['picsum', 'placeholder', 'unsplash', 'dummyImage']) ? $source : "picsum");
 
         if( $source == "unsplash" )
         {
@@ -31,12 +31,12 @@ class Settings extends Model
                 $url .= "?" . $query; 
             }
         }
-        elseif( $source == "placeholder" )
+        elseif( $source == "placeholder" || $source == "dummyimage" )
         {
-            $url = "https://via.placeholder.com/";
+            $url = "https://dummyimage.com/";
             $url .= $width . "x" . $height;
-            $url .= "?text=" . $text ?? $width . " x " . $height;
-            $url .= "&color=#808080";
+            $url .= "/bdbdbd/f5f5f5";
+            $url .= "?text=" . $text ?? ($width . " x " . $height);
         }
         else
         {
